@@ -32,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun clickToInicio(view: View?){
+        val intent = Intent(this,InicioActivity::class.java)
+        startActivity(intent)
+    }
+
     // Si usuario esta iniciado vamos a llevarlo a inicio
     fun verificarUsuario() {
 
