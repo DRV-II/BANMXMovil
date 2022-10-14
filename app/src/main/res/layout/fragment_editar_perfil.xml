@@ -19,31 +19,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
-    <ImageButton
-        android:id="@+id/imagenPerfilEditarPerfil"
-        android:layout_width="258dp"
-        android:layout_height="207dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12"
-        app:srcCompat="@drawable/download" />
-
     <EditText
         android:id="@+id/nameInputEditarPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="316dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/imagenPerfilEditarPerfil"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="@+id/imagenPerfilEditarPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/imagenPerfilEditarPerfil" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/guardarBotonEditarPerfil"
@@ -77,5 +64,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonCambiarContraEditarPerfil"
         app:layout_constraintVertical_bias="0.768" />
+
+    <ImageView
+        android:id="@+id/imagenPerfilEditarPerfil2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/download"
+        app:layout_constraintBottom_toTopOf="@+id/nameInputEditarPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

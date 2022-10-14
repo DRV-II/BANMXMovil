@@ -1,6 +1,7 @@
 package mx.itesm.banmxmovil
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -32,13 +34,26 @@ class RegisterActivity : AppCompatActivity() {
 
         // Verificamos que contraseñas sean iguales
         if (isValidPassword(pwdStr)) {
-            if (pwdStr == pwdStrVer) {
+            if (pwdStr == pwdStrVer) { // Vamos a registrar usuario en auth
                 var authTask = Firebase.auth.createUserWithEmailAndPassword(emailStr, pwdStr)
 
                 authTask.addOnCompleteListener(this) { resultado ->
 
                     if (resultado.isSuccessful) {
-
+                        // Guardamos photo de perfil
+                        // Got the download URL for 'users/me/profile.png'
+                        // Subimos a auth
+                        val user = Firebase.auth.currentUser
+                        val profileUpdates = userProfileChangeRequest {
+                            //displayName = "${args.idUsuario}"
+                            photoUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/banmxmovil.appspot.com/o/PerfilPredeterminado%2FPerfilPredeterminado.png?alt=media&token=5dee5118-a05e-4163-b2a7-bdc2dc95da22")
+                        }
+                        user!!.updateProfile(profileUpdates)
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    Log.d("AUTH FIREBASE", "User profile updated.")
+                                }
+                            }
                         Toast.makeText(this, "REGISTRO EXITOSO", Toast.LENGTH_SHORT).show()
                     } else {
 
